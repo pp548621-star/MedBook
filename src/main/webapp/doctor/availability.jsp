@@ -120,7 +120,6 @@
                                     <tr>
                                         <th>Day</th>
                                         <th>Time Range</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,14 +127,6 @@
                                     <tr>
                                         <td><strong><%= av.getDayOfWeek() %></strong></td>
                                         <td><%= av.getStartTime() %> - <%= av.getEndTime() %></td>
-                                        <td>
-                                            <form action="${pageContext.request.contextPath}/doctor/availability" method="post">
-                                                <input type="hidden" name="action" value="delete">
-                                                <input type="hidden" name="id" value="<%= av.getId() %>">
-                                                <button type="submit" class="btn btn-sm btn-danger">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                            </form>
                                         </td>
                                     </tr>
                                     <% } %>

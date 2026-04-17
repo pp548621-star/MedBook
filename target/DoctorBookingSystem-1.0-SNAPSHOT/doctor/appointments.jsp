@@ -56,7 +56,6 @@
                                 <th>Patient Name</th>
                                 <th>Date & Time</th>
                                 <th>Status</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,41 +79,6 @@
                                         <span class="badge badge-completed"><i class="fa-solid fa-check-double"></i> Completed</span>
                                     <% } %>
                                 </td>
-                                <td>
-                                    <% if("pending".equals(a.getStatus())) { %>
-                                        <div style="display: flex; gap: 8px;">
-                                            <form action="../appointment" method="post">
-                                                <input type="hidden" name="action" value="updateStatus">
-                                                <input type="hidden" name="id" value="<%= a.getId() %>">
-                                                <input type="hidden" name="status" value="confirmed">
-                                                <input type="hidden" name="role" value="doctor">
-                                                <button type="submit" class="btn btn-success btn-sm">
-                                                    <i class="fa-solid fa-check"></i> Accept
-                                                </button>
-                                            </form>
-                                            <form action="../appointment" method="post">
-                                                <input type="hidden" name="action" value="updateStatus">
-                                                <input type="hidden" name="id" value="<%= a.getId() %>">
-                                                <input type="hidden" name="status" value="rejected">
-                                                <input type="hidden" name="role" value="doctor">
-                                                <button type="submit" class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger);">
-                                                    <i class="fa-solid fa-xmark"></i> Reject
-                                                </button>
-                                            </form>
-                                        </div>
-                                    <% } else if("confirmed".equals(a.getStatus())) { %>
-                                        <form action="../appointment" method="post">
-                                            <input type="hidden" name="action" value="updateStatus">
-                                            <input type="hidden" name="id" value="<%= a.getId() %>">
-                                            <input type="hidden" name="status" value="completed">
-                                            <input type="hidden" name="role" value="doctor">
-                                            <button type="submit" class="btn btn-outline btn-sm" style="border-color: var(--info); color: var(--info);">
-                                                <i class="fa-solid fa-flag-checkered"></i> Mark Completed
-                                            </button>
-                                        </form>
-                                    <% } else { %>
-                                        <span style="color: var(--text-light);">No Actions</span>
-                                    <% } %>
                                 </td>
                             </tr>
                             <% } %>

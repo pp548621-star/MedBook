@@ -57,7 +57,6 @@
                                 <th>ID</th>
                                 <th>Specialization Name</th>
                                 <th>Doctor Count</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,19 +69,6 @@
                                         <%= s.getDoctorCount() %> <%= s.getDoctorCount() == 1 ? "doctor" : "doctors" %>
                                     </span>
                                 </td>
-                                <td>
-                                    <div style="display: flex; gap: 8px;">
-                                        <a href="editSpecialization.jsp?id=<%= s.getId() %>" class="btn btn-sm btn-outline">
-                                            <i class="fa-solid fa-edit"></i> Edit
-                                        </a>
-                                        <form action="../specialization" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to remove this specialization?');">
-                                            <input type="hidden" name="action" value="delete">
-                                            <input type="hidden" name="id" value="<%= s.getId() %>">
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                <i class="fa-solid fa-trash"></i> Remove
-                                            </button>
-                                        </form>
-                                    </div>
                                 </td>
                             </tr>
                             <% } %>

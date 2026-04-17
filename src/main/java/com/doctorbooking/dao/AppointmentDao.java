@@ -12,22 +12,28 @@ import java.util.List;
 
 public class AppointmentDao {
 
-    public boolean addAppointment(Appointment appt) {
-        boolean success = false;
+    public int addAppointment(Appointment appt) {
+        int generatedId = 0;
         String query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, appointment_time, status) " +
                        "VALUES (?, ?, ?, ?, 'pending')";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(query)) {
+             PreparedStatement ps = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, appt.getPatientId());
             ps.setInt(2, appt.getDoctorId());
             ps.setString(3, appt.getAppointmentDate());
             ps.setString(4, appt.getAppointmentTime());
             
-            if (ps.executeUpdate() > 0) success = true;
+            if (ps.executeUpdate() > 0) {
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        generatedId = rs.getInt(1);
+                    }
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return success;
+        return generatedId;
     }
 
     public List<Appointment> getAppointmentsByPatient(int patientId) {

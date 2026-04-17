@@ -62,7 +62,6 @@
                                 <th>Doctor Name</th>
                                 <th>Specialization</th>
                                 <th>Consultation Fee</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,19 +77,6 @@
                                 </td>
                                 <td><%= d.getSpecializationName() %></td>
                                 <td>₹<%= d.getFees() %></td>
-                                <td>
-                                    <div style="display: flex; gap: 8px;">
-                                        <a href="editDoctor.jsp?id=<%= d.getId() %>" class="btn btn-sm btn-outline">
-                                            <i class="fa-solid fa-edit"></i> Edit
-                                        </a>
-                                        <form action="../admin" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to remove this doctor? This will also delete their account.');">
-                                            <input type="hidden" name="action" value="deleteDoctor">
-                                            <input type="hidden" name="userId" value="<%= d.getUserId() %>">
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                <i class="fa-solid fa-trash"></i> Remove
-                                            </button>
-                                        </form>
-                                    </div>
                                 </td>
                             </tr>
                             <% } %>

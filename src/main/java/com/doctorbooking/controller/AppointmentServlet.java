@@ -35,7 +35,11 @@ public class AppointmentServlet extends HttpServlet {
         appt.setAppointmentTime(time);
 
         AppointmentDao dao = new AppointmentDao();
-        if (dao.addAppointment(appt)) {
+        int newId = dao.addAppointment(appt);
+        if (newId > 0) {
+            com.doctorbooking.dao.AppointmentTimelineDao atDao = new com.doctorbooking.dao.AppointmentTimelineDao();
+            atDao.addTimelineEntry(newId, "pending", "Appointment booked by patient.");
+            
             request.getSession().setAttribute("succMsg", "Appointment booked successfully");
             response.sendRedirect("patient/appointments.jsp");
         } else {
@@ -53,6 +57,9 @@ public class AppointmentServlet extends HttpServlet {
         boolean result = dao.updateStatus(id, status);
         
         if (result) {
+            com.doctorbooking.dao.AppointmentTimelineDao atDao = new com.doctorbooking.dao.AppointmentTimelineDao();
+            atDao.addTimelineEntry(id, status, "Status updated to " + status + " by " + role + ".");
+            
             request.getSession().setAttribute("succMsg", "Status updated successfully");
         } else {
             request.getSession().setAttribute("errorMsg", "Failed to update status");

@@ -51,7 +51,6 @@
                                 <th>Specialization</th>
                                 <th>Date & Time</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,20 +77,6 @@
                                         <span class="badge badge-completed"><i class="fa-solid fa-check-double"></i> Completed</span>
                                     <% } %>
                                 </td>
-                                <td>
-                                    <% if("pending".equals(a.getStatus()) || "confirmed".equals(a.getStatus())) { %>
-                                        <form action="../appointment" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to cancel this appointment?');">
-                                            <input type="hidden" name="action" value="updateStatus">
-                                            <input type="hidden" name="id" value="<%= a.getId() %>">
-                                            <input type="hidden" name="status" value="cancelled">
-                                            <input type="hidden" name="role" value="patient">
-                                            <button type="submit" class="btn btn-sm btn-outline" style="border-color: var(--danger); color: var(--danger);">
-                                                <i class="fa-solid fa-xmark"></i> Cancel
-                                            </button>
-                                        </form>
-                                    <% } else { %>
-                                        <span style="color: var(--text-light);">-</span>
-                                    <% } %>
                                 </td>
                             </tr>
                             <% } %>

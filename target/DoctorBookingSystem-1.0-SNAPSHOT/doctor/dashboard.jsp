@@ -113,7 +113,6 @@
                                 <tr>
                                     <th>Patient Name</th>
                                     <th>Date & Time</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -129,27 +128,6 @@
                                             <i class="fa-regular fa-clock"></i> <%= a.getAppointmentTime() %>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div style="display: flex; gap: 8px;">
-                                            <form action="../appointment" method="post">
-                                                <input type="hidden" name="action" value="updateStatus">
-                                                <input type="hidden" name="id" value="<%= a.getId() %>">
-                                                <input type="hidden" name="status" value="confirmed">
-                                                <input type="hidden" name="role" value="doctor">
-                                                <button type="submit" class="btn btn-success btn-sm">
-                                                    <i class="fa-solid fa-check"></i> Accept
-                                                </button>
-                                            </form>
-                                            <form action="../appointment" method="post">
-                                                <input type="hidden" name="action" value="updateStatus">
-                                                <input type="hidden" name="id" value="<%= a.getId() %>">
-                                                <input type="hidden" name="status" value="rejected">
-                                                <input type="hidden" name="role" value="doctor">
-                                                <button type="submit" class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger);">
-                                                    <i class="fa-solid fa-xmark"></i> Reject
-                                                </button>
-                                            </form>
-                                        </div>
                                     </td>
                                 </tr>
                                 <% } %>

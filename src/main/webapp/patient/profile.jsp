@@ -49,26 +49,11 @@
                     <h3>Personal Information</h3>
                 </div>
                 <div class="content-card-body">
-                    <form action="${pageContext.request.contextPath}/profile" method="post" enctype="multipart/form-data" style="max-width: 600px;">
+                    <form action="${pageContext.request.contextPath}/profile" method="post" style="max-width: 600px;">
                         <input type="hidden" name="action" value="updatePatient">
                         <input type="hidden" name="userId" value="<%= u.getId() %>">
                         
-                        <!-- Profile Photo Section -->
-                        <div class="profile-photo-upload" style="margin-bottom: 32px; display: flex; align-items: center; gap: 24px;">
-                            <div class="current-photo" style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; background: var(--bg-light); border: 2px solid var(--border-light);">
-                                <% if(u.getPhoto() != null && !u.getPhoto().isEmpty()) { %>
-                                    <img src="${pageContext.request.contextPath}/uploads/profiles/<%= u.getPhoto() %>" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
-                                <% } else { %>
-                                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--text-muted);">
-                                        <i class="fa-solid fa-user"></i>
-                                    </div>
-                                <% } %>
-                            </div>
-                            <div class="upload-controls">
-                                <label class="form-label" style="margin-bottom: 8px; display: block;">Change Profile Photo</label>
-                                <input type="file" name="photo" class="form-control" accept="image/*">
-                            </div>
-                        </div>
+
 
                         <div class="form-group">
                             <label class="form-label">Full Name</label>

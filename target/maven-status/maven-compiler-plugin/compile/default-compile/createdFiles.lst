@@ -4,6 +4,7 @@ com\doctorbooking\util\DBConnection.class
 com\doctorbooking\controller\AppointmentServlet.class
 com\doctorbooking\dao\SpecializationDao.class
 com\doctorbooking\model\Doctor.class
+com\doctorbooking\model\AppointmentTimeline.class
 com\doctorbooking\controller\AvailabilityServlet.class
 com\doctorbooking\controller\ProfileServlet.class
 com\doctorbooking\controller\SpecializationServlet.class
@@ -13,6 +14,7 @@ com\doctorbooking\test\TestHash.class
 com\doctorbooking\dao\UserDao.class
 com\doctorbooking\controller\AdminServlet.class
 com\doctorbooking\model\User.class
+com\doctorbooking\dao\AppointmentTimelineDao.class
 com\doctorbooking\model\Availability.class
 com\doctorbooking\controller\AuthServlet.class
 com\doctorbooking\dao\DoctorDao.class
